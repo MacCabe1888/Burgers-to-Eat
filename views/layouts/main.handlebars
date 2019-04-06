@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/assets/css/burger_style.css" type="text/css"/>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<title>Burgers to Eat</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+	{{{ body }}}
+</body>
+
+<script type="text/javascript">
+
+  // Make sure we wait to attach our handlers until the DOM is fully loaded.
+  $(function() {
+
+    $(".eat").on("click", function(event) {
+      let id = $(this).data("id");
+      // Send the PUT request.
+      $.ajax("/api/burgers/" + id, {
+        type: "PUT",
+        data: {devoured: true}
+      }).then(
+        function() {
+          // Reload the page to get the updated list
+          location.reload();
+        }
+      );
+    });
+
+    $(".create-burger").on("submit", function(event) {
+      // Make sure to preventDefault on a submit event.
+      event.preventDefault();
+
+      let newBurger = {
+        burger_name: $("#burger_name").val().trim(),
+        devoured: false
+      };
+
+      // Send the POST request.
+      $.ajax("/api/burgers", {
+        type: "POST",
+        data: newBurger
+      }).then(
+        function() {
+          // Reload the page to get the updated list
+          location.reload();
+        }
+      );
+    });
+
+    $(".delete").on("click", function(event) {
+      let id = $(this).data("id");
+      // Send the DELETE request.
+      $.ajax("/api/burgers/" + id, {
+        type: "DELETE"
+      }).then(
+        function() {
+          // Reload the page to get the updated list
+          location.reload();
+        }
+      );
+    });
+
+  });
+
+</script>
+
+</html>
