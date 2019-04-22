@@ -2,10 +2,21 @@ body {
     background: url(../images/sesame-seeds.jpg);
 }
 
-#burger-img {
+#gif-display {
+    display: flex;
+    justify-content: center;
+
+}
+
+#burger-img-container {
     display: flex;
     justify-content: center;
     margin-top: 21.44px;
+}
+
+#burger-img {
+    width: 20%;
+    height: 0%;
 }
 
 header {
@@ -42,6 +53,8 @@ h1 {
 
 h2 {
     text-align: center;
+    padding: 10px;
+    margin: 0;
 }
 
 .list-row {
@@ -79,7 +92,7 @@ h2 {
     background-color: wheat;
     width: fit-content;
     border: 2px inset tomato;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
     margin: 21.44px 0 21.44px 0;
 }
 
@@ -97,9 +110,4 @@ input {
     background-color: antiquewhite;
     border-color: tomato;
     margin-left: 10px;
-}
-
-#gif-display {
-    display: flex;
-    justify-content: center;
 }
